@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trendium - Viral Finds</title>
+  <meta name="description" content="Trendium — curated viral products from TikTok & Amazon. Click to buy via affiliate links." />
+  <style>
+    :root{
+      --bg:#000;
+      --primary:#fff;
+      --muted:#aaa;
+      --radius:10px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--primary)}
+    header{background:#111;color:var(--primary);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+    header .logo{font-weight:700;font-size:20px;display:flex;align-items:center;gap:8px}
+    header input{flex:1;margin:0 20px;padding:8px 10px;border:none;border-radius:var(--radius);max-width:400px;background:#222;color:var(--primary)}
+    .container{max-width:1200px;margin:0 auto;padding:20px}
+    .banner{background:#111;border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:20px}
+    .banner h1{font-size:26px;margin-bottom:8px;color:var(--primary)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+    .card{background:#111;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 6px rgba(255,255,255,0.05);transition:transform .2s}
+    .card:hover{transform:scale(1.02)}
+    .thumb img{width:100%;height:180px;object-fit:cover}
+    .info{padding:10px}
+    .info h3{font-size:15px;margin-bottom:6px;color:var(--primary)}
+    .info p{color:var(--muted);font-size:13px;margin-bottom:8px}
+    .price{font-weight:700;color:var(--primary);margin-bottom:10px}
+    .btn{display:block;width:100%;text-align:center;background:var(--primary);color:#000;padding:8px 0;border-radius:6px;text-decoration:none;font-weight:600}
+    footer{margin-top:40px;padding:20px;text-align:center;font-size:13px;color:var(--muted);border-top:1px solid #222}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Trendium</div>
+    <input type="search" placeholder="Search viral products..." />
+    <div class="user-actions" style="font-size:14px;"></div>
+  </header>
+
+  <div class="container">
+    <div class="banner">
+      <h1>Discover What’s Blowing Up Online!</h1>
+      <p>Top trending TikTok & Amazon products, updated daily.</p>
+    </div>
+
+    <div class="grid" id="productGrid"></div>
+  </div>
+
+  <footer>
+    Trendium © 2025 • Viral Finds Daily • We may earn affiliate commissions.
+  </footer>
+
+  <script>
+    const products=[
+      {title:'LED Sunset Lamp',desc:'TikTok viral mood lamp for cozy vibes',price:'£19.99',img:'https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&w=800',link:'#'},
+      {title:'Galaxy Star Projector',desc:'Fill your ceiling with stars',price:'£29.99',img:'https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=800',link:'#'},
+      {title:'Reusable Coffee Cup',desc:'Eco-friendly & trending',price:'£9.99',img:'https://images.pexels.com/photos/4056533/pexels-photo-4056533.jpeg?auto=compress&cs=tinysrgb&w=800',link:'#'},
+      {title:'Mini Desk Vacuum',desc:'Clean your desk in seconds',price:'£14.99',img:'https://images.pexels.com/photos/4792667/pexels-photo-4792667.jpeg?auto=compress&cs=tinysrgb&w=800',link:'#'},
+      {title:'Smart LED Light Strip',desc:'Change colors with your phone',price:'£24.99',img:'https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=800',link:'#'}
+    ];
+    const grid=document.getElementById('productGrid');
+    products.forEach(p=>{
+      const c=document.createElement('div');
+      c.className='card';
+      c.innerHTML=`
+        <div class='thumb'><img src='${p.img}' alt='${p.title}'></div>
+        <div class='info'>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class='price'>${p.price}</div>
+          <a class='btn' href='${p.link}' target='_blank'>Buy Now</a>
+        </div>`;
+      grid.appendChild(c);
+    });
+  </script>
+</body>
+</html>
